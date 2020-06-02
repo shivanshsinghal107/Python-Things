@@ -12,9 +12,9 @@ def progress_function(self, chunk, bytes_remaining):
 def download():
     global video_url
     global size
-    print(f'Just a sec, fetching available resolutions for {yt.title}')
     url = video_url.get()
     yt = YouTube(str(url), on_progress_callback = progress_function)
+    print(f'Just a sec, fetching available resolutions for {yt.title}')
 #    try:
     videos = yt.streams.filter(progressive = True, file_extension = "mp4")
 
