@@ -9,13 +9,13 @@ Technologies used: ***Web Scraping(requests, BeautifulSoup), smtplib(for sending
 2) **Track price by product name** - Track prices of multiple products by just telling the product name, and expected price (accurate if you give the product name exact, you'll be getting the product link to buy if the price feel down)<br>
 Technologies used: ***Web Scraping(requests, BeautifulSoup)***
 
-I learnt basics of Web Scraping and automatic email sending using `smtplib` of Python by building this project.
+I learnt basics of Web Scraping and automatic email sending using `smtplib` library of Python by building this project.
 
 ### YouTube Downloader (A Python tkinter GUI app)
-Give the URL of the YouTube video, it will fetches all available resolutions of that video with their sizes in MBs, and lists out the options to download on the Command Prompt.<br>
+Give the URL of the YouTube video, it will fetch all available resolutions of that video with their sizes in MBs, and lists out the options to download on the Command Window.<br>
 It also keeps track of the progress of download by showing percentage downloaded on the cmd window.<br>
 Technologies used: ***tkinter, pytube***
 
-I learnt basics of tkinter(i.e. learnt to build a simple python GUI app) and `pytube` to interact with YouTube with help of python.
+I learnt basics of tkinter(i.e. learnt to build a simple python GUI app) and `pytube` to interact with YouTube with help of python by building this project.
 
 <img src="YouTube Downloader/youtube downloader.PNG" width="425"/>
