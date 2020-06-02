@@ -6,3 +6,5 @@ So I built a python GUI app to download YouTube videos on my local computer, whi
 ## Working & Functionalities:
 - On giving the URL of the YouTube video, it fetches all available resolutions of that video with their sizes in MBs, and lists out the options to download on the Command Prompt.
 - It also keeps track of the progress of download by showing percentage downloaded on the cmd window.
+
+<img src="youtube downloader.PNG" width="425"/>
