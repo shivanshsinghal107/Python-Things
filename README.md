@@ -16,6 +16,6 @@ Give the URL of the YouTube video, it will fetches all available resolutions of 
 It also keeps track of the progress of download by showing percentage downloaded on the cmd window.<br>
 Technologies used: ***tkinter, pytube***
 
-I learnt basics of tkinter(building python a GUI app) and `pytube` to interact with YouTube with help of python.
+I learnt basics of tkinter(i.e. learnt to build a simple python GUI app) and `pytube` to interact with YouTube with help of python.
 
 <img src="YouTube Downloader/youtube downloader.PNG" width="425"/>
