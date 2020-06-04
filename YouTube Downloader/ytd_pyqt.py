@@ -75,6 +75,7 @@ class Window(QtWidgets.QMainWindow):
             data = urllib.request.urlopen(url).read()
             pixmap = QtGui.QPixmap()
             pixmap.loadFromData(data)
+            pixmap = pixmap.scaled(300, 200)
             self.thumbnail.setPixmap(pixmap)
 
             videos = yt.streams.order_by('resolution')
