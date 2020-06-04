@@ -69,6 +69,7 @@ class Window(QtWidgets.QMainWindow):
         if video_url:
             global size
             global videos
+            self.listWidget.clear()
             yt = YouTube(str(video_url), on_progress_callback = self.progress_function)
 
             url = yt.thumbnail_url
@@ -80,6 +81,7 @@ class Window(QtWidgets.QMainWindow):
 
             videos = yt.streams.order_by('resolution')
             count = 1
+            self.listWidget.addItem(f'{yt.title}\n')
             for video in videos:
                 size = video.filesize
                 stream = f'{count}. {video} {round(size/1024**2, 2)} MB'
