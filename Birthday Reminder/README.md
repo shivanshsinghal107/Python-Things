@@ -1,2 +1,2 @@
-## Birthday Reminder
-A personal WhatsApp birthdays and anniversaries reminder using Twilio and python
+# Birthday Reminder
+A personal Telegram Bot birthdays and anniversaries reminder
