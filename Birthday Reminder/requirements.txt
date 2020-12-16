@@ -1,2 +1,1 @@
-twilio==6.48.0
-APScheduler==3.6.3
+python-telegram-bot==13.1
