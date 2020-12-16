@@ -8,4 +8,4 @@ I built these projects for fun, intended to ***Automate the Boring Stuff with Py
   - `PyQt5` YTD
   - `tkinter` YTD
 - AI Plays Flappy Bird
-- WhatsApp Bot (Birthday Reminder)
+- Telegram Bot (Birthday Reminder)
