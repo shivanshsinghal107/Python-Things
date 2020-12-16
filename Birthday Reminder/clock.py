@@ -1,17 +1,11 @@
 import os
 import datetime
-from twilio.rest import Client
-from apscheduler.schedulers.blocking import BlockingScheduler
-
-account_sid = os.getenv('sid')
-auth_token = os.getenv('token')
-client = Client(account_sid, auth_token)
+from telegram.ext import Updater, CommandHandler
 
 bdays = {'name': 'day-month'}
-
 anivs = {}
 
-wishes = "Todays's Celebrations 🎉✨ "
+wishes = "Todays's Celebrations 🎉✨\n\n"
 today = datetime.date.today().strftime("%d-%m")
 
 bdays_count = 0
@@ -20,11 +14,10 @@ for bday, date in bdays.items():
         bdays_count += 1
 
 if bdays_count > 0:
-    wishes += "Birthdays🎊🍻: "
+    wishes += "Birthdays🎊🍻\n"
     for bday, date in bdays.items():
         if date == today:
-            wishes += f"{bday.title()} | "
-    wishes = wishes[:-2]
+            wishes += f"{bday.title()}\n"
 
 anivs_count = 0
 for ann, date in anivs.items():
@@ -32,25 +25,40 @@ for ann, date in anivs.items():
         anivs_count += 1
 
 if anivs_count > 0:
-    wishes += "Anniversary❤🤗: "
+    wishes += "\nAnniversary❤🤗:\n"
     for ann, date in anivs.items():
         if date == today:
-            wishes += f"{ann.title()} | "
-    wishes = wishes[:-2]
+            wishes += f"{ann.title()}\n"
 
-def remind():    
-    if anivs_count > 0 or bdays_count > 0:
-        message = client.messages.create(
-                                            from_='whatsapp:+14155238886',  
-                                            body = wishes,      
-                                            to = 'whatsapp:your_no'
-                                        )
-        print(message.sid)
+
+def remind(context):
+    if bdays_count > 0 or anivs_count > 0:
+        message = wishes
     else:
-        print("No celebrations")
+        message = "No Celebrations"
+    context.bot.send_message(chat_id = context.job.context, text = message)
+
+def send_wishes(update, context):
+    context.bot.send_message(chat_id = update.effective_chat.id, text = "wishes on the way")
+    interval = datetime.timedelta(days = 1)
+    context.job_queue.run_repeating(remind, interval = interval, first = 0, context = update.effective_chat.id)
+
+def stop_wishes(update, context):
+    context.bot.send_message(chat_id = update.effective_chat.id, text = "Bot Stopped")
+    context.job_queue.stop()
 
 
-sched = BlockingScheduler(timezone = "Asia/Kolkata")
-sched.add_job(remind, 'interval', days = 1, start_date = "2020-12-08 00:01:01")
+def main():
+    TOKEN = os.getenv("TOKEN")
+    updater = Updater(TOKEN, use_context = True)
+    dp = updater.dispatcher
+    dp.add_handler(CommandHandler('start', send_wishes))
+    dp.add_handler(CommandHandler('stop', stop_wishes))
+    PORT = int(os.environ.get('PORT', 5000))
+    updater.start_webhook(listen="0.0.0.0", port=PORT, url_path=TOKEN)
+    updater.bot.set_webhook("https://example.herokuapp.com/" + TOKEN)
+    updater.idle()
 
-sched.start()
+
+if __name__ == '__main__':
+    main()
