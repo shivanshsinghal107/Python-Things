@@ -1,2 +1,2 @@
 # Birthday Reminder
-A personal Telegram Bot birthdays and anniversaries reminder
+A personal Email Bot birthdays and anniversaries reminder
