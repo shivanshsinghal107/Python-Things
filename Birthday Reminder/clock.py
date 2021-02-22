@@ -11,7 +11,7 @@ anivs = {'mummy-papa': '03-02',
          'mama-mami': '24-06',
          'chacha-chachi': '28-11'}
 
-wishes = "Todays's Celebrations 🎉✨\n\n"
+wishes = "Todays's Celebrations\n"
 today = datetime.date.today().strftime("%d-%m")
 
 bdays_count = 0
@@ -20,7 +20,7 @@ for bday, date in bdays.items():
         bdays_count += 1
 
 if bdays_count > 0:
-    wishes += "Birthdays🎊🍻\n"
+    wishes += "Birthdays\n"
     for bday, date in bdays.items():
         if date == today:
             wishes += f"{bday.title()}\n"
@@ -31,7 +31,7 @@ for ann, date in anivs.items():
         anivs_count += 1
 
 if anivs_count > 0:
-    wishes += "\nAnniversary❤🤗:\n"
+    wishes += "\nAnniversary:\n"
     for ann, date in anivs.items():
         if date == today:
             wishes += f"{ann.title()}\n"
@@ -57,11 +57,12 @@ def remind():
     if bdays_count > 0 or anivs_count > 0:
         email = "shivanshsinghal107@gmail.com"
         subject = "Don't forget to wish"
+        print(wishes)
         send_mail(email, subject, wishes)
     else:
         print("No Celebrations")
 
 
 sched = BlockingScheduler()
-sched.add_job(remind, 'interval', start_date = "2020-12-23 00:05:00", days = 1)
+sched.add_job(remind, 'interval', days = 1)
 sched.start()
